@@ -11,16 +11,30 @@
 
     <script>
 
+        // const climbStairs = function (n) {
+        //     // 处理递归边界
+        //     if (n === 1) {
+        //         return 1
+        //     }
+        //     if (n === 2) {
+        //         return 2
+        //     }
+        //     // 递归计算
+        //     return climbStairs(n - 1) + climbStairs(n - 2)
+        // };
+
         const climbStairs = function (n) {
-            // 处理递归边界
-            if (n === 1) {
-                return 1
+            // 初始化状态数组
+            const f = [];
+            // 初始化已知值
+            f[1] = 1;
+            f[2] = 2;
+            // 动态更新每一层楼梯对应的结果
+            for (let i = 3; i <= n; i++) {
+                f[i] = f[i - 2] + f[i - 1];
             }
-            if (n === 2) {
-                return 2
-            }
-            // 递归计算
-            return climbStairs(n - 1) + climbStairs(n - 2)
+            // 返回目标值
+            return f[n];
         };
 
         const result = climbStairs(5);
